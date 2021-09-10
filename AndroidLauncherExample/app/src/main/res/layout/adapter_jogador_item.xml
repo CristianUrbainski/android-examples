@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="jogador"
+            type="br.com.urbainski.android.launcher.example.model.Jogador" />
+        <variable
+            name="anoCarreiraFim"
+            type="java.lang.String" />
+        <variable
+            name="listener"
+            type="br.com.urbainski.android.launcher.example.ui.adapter.JogadorAdapter.JogadorAdapterListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClickListener="@{() -> listener.onSelect(jogador)}">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="48dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.70" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:scaleType="centerCrop"
+            android:src="@{jogador.idProfileImage}"
+            app:civ_border_color="@color/teal_200"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/profile_picture" />
+
+        <TextView
+            android:id="@+id/textNomeJogador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:lines="1"
+            android:text="@{jogador.name}"
+            tools:text="Nome do jogador"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintStart_toEndOf="@id/guideline1" />
+
+        <TextView
+            android:id="@+id/textEmailJogador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@{jogador.email}"
+            tools:text="Email do jogador"
+            android:textSize="11sp"
+            app:layout_constraintTop_toBottomOf="@id/textNomeJogador"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintStart_toEndOf="@id/guideline1" />
+
+        <TextView
+            android:id="@+id/textCarreiraJogador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:lines="1"
+            android:text="@{ @string/carreira_dois_pontos_inicio_traco_fim(jogador.anoCarreiraInicio, anoCarreiraFim) }"
+            android:textAlignment="textEnd"
+            tools:text="Carreira: 1990 - 2006"
+            android:textSize="11sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

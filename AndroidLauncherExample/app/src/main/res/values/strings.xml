@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AndroidLauncherExample</string>
+    <string name="lista_jogadores">Lista de jogadores</string>
+    <string name="detalhes_jogador">Detalhes do jogador</string>
+    <string name="atual">Atual</string>
+    <string name="carreira_dois_pontos_inicio_traco_fim">Carreira: %s - %s</string>
+    <string name="votar">Votar</string>
+    <string name="value_estrelas_exclamacao">%.2f estrelas!</string>
 </resources>

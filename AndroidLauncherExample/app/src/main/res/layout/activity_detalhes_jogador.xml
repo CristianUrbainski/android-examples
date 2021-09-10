@@ -1,0 +1,100 @@
+            <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.DetalhesJogadorActivity">
+
+    <data>
+        <variable
+            name="listener"
+            type="br.com.urbainski.android.launcher.example.ui.activity.DetalhesJogadorActivityEventListener" />
+        <variable
+            name="jogador"
+            type="br.com.urbainski.android.launcher.example.model.Jogador" />
+        <variable
+            name="anoCarreiraFim"
+            type="java.lang.String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            android:src="@{jogador.idProfileImage}"
+            app:civ_border_color="@color/teal_200"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/profile_picture" />
+
+        <TextView
+            android:id="@+id/textNomeJogador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:lines="1"
+            android:text="@{jogador.name}"
+            android:textAlignment="center"
+            tools:text="Nome do jogador"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/imgProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textEmailJogador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@{jogador.email}"
+            tools:text="Email do jogador"
+            android:textAlignment="center"
+            android:textSize="11sp"
+            app:layout_constraintTop_toBottomOf="@id/textNomeJogador"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textCarreiraJogador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:lines="1"
+            android:text="@{ @string/carreira_dois_pontos_inicio_traco_fim(jogador.anoCarreiraInicio, anoCarreiraFim) }"
+            android:textAlignment="center"
+            tools:text="Carreira: 1990 - 2006"
+            android:textSize="11sp"
+            app:layout_constraintTop_toBottomOf="@id/textEmailJogador"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnVotar"/>
+
+        <Button
+            android:id="@+id/btnVotar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/votar"
+            android:layout_margin="16dp"
+            android:onClickListener="@{() -> listener.onVotar()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
